@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blob-Arraybuffer</title>
+</head>
+
+<body>
+    <input type="file" id="file">
+    <script>
+        const fileEl = document.querySelector("#file");
+        fileEl.addEventListener('change', fileHandler);
+
+        async function fileHandler(e) {
+            let file = e.target.files[0];
+            const blob = new Blob([file], { type: file.type });
+            var buffer = await blob.arrayBuffer();
+            console.log(buffer);
+        }
+    </script>
+</body>
+
+</html>

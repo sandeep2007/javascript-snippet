@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="name">
+    <script>
+        function stringToArrayBuffer(str) {
+            var buf = new ArrayBuffer(str.length);
+            var bufView = new Uint8Array(buf);
+            for (var i = 0, strLen = str.length; i < strLen; i++) {
+                bufView[i] = str.charCodeAt(i);
+            }
+            return buf;
+        }
+
+        const input = document.querySelector("#name");
+        input.addEventListener('keyup', inputHandler);
+
+        function inputHandler(e) {
+            const ab = stringToArrayBuffer(e.target.value);
+            console.log(ab);
+        }
+    </script>
+</body>
+
+</html>
